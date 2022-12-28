@@ -8,15 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class FoodAdapter : ListAdapter<FoodModel, FoodAdapter.ProgrammingViewHolder>(DiffUtilsCallback()) {
+class FoodAdapter : ListAdapter<FoodModel, FoodAdapter.FoodViewHolder>(DiffUtilsCallback()) {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgrammingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.food_item, parent, false)
-        return ProgrammingViewHolder(view)
+        return FoodViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProgrammingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val item = getItem(position)
         holder.bindData(item)
     }
@@ -33,7 +32,7 @@ class FoodAdapter : ListAdapter<FoodModel, FoodAdapter.ProgrammingViewHolder>(Di
 
     }
 
-    inner class ProgrammingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.food_title)
         fun bindData(item: FoodModel) {
             title.text = item.title
